@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	<script type="text/javascript" src="./js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.smoothwheel.js"></script>
+    <script type="text/javascript" src="./js/jquery.mousewheel.min.js"></script>
+</head>
+<body>
+
+    <div class="wrap">
+        <div class="box" style="display:block; height:100vh; background:red;"></div>
+        <div class="box" style="display:block; height:100vh; background:orange;"></div>
+        <div class="box" style="display:block; height:100vh; background:blue;"></div>
+        <div class="box" style="display:block; height:100vh; background:green;"></div>
+    </div>
+    <script>
+        var numWheelCount = 0;
+	 	$(".wrap").on("mousewheel DOMMouseScroll", function(e){
+	 		var E = e.originalEvent;
+	 		delta = 0;
+	 		if (E.deltaY) {
+	 			delta = E.deltaY * -140;
+	 		}else{
+	 			delta = E.wheelDelta;
+            }
+            
+            if(delta < 0){  //
+                console.log(numWheelCount)
+                console.log("내려가");
+
+            }else if (delta > 0){
+                console.log(numWheelCount + "gjgjgj")
+                console.log("올라가");
+
+            }
+        });
+
+    </script>
+</body>
+</html>
