@@ -58,13 +58,41 @@
         <div class="box t4" style="position:absolute; top:100%; left:0; display:block; width:100%; height:100vh; background:#fa9e60;"></div>
     </div>
     <script>
+        var pageN1;
+        var pageN2;
         var swiper = new Swiper('.swiper-container',{
+            direction: 'vertical',
+            slidesPerView: 1,
+            mousewheel: true,
             on:{
-                
+                slidePrevTransitionEnd: function(){
+                    if(swiper.activeIndex == 0){
+                        TweenMax.to($(".box.t1"),0.6, {delay:0.3, top:"0", background:"#cccccc"})
+                        TweenMax.to($(".box.t2"),0.6, {delay:0.3, top:"100%",background:"#d50505"})
+                    }
+                },
+                slideNextTransitionEnd: function(){
+                    if(swiper.activeIndex == 2){
+                        TweenMax.to($(".box.t1"),0.6, {delay:0.3, top:"-100%", background:"#cccccc"})
+                        TweenMax.to($(".box.t2"),0.6, {delay:0.3, top:"0",background:"#d50505"})
+                    }
+                },
+
+                /*
+                slideChangeTransitionStart:function(){
+                    pageN1 = swiper.activeIndex;
+                },
+                slideChangeTransitionEnd:function(){
+                    pageN2 = swiper.activeIndex;
+                    if(pageN2 < pageN1){
+                        
+                    }else{
+
+                    }
+                }*/
             }
         });
 
-        var numWheelCount = 0;
 	 	$(".wrap").on("mousewheel DOMMouseScroll", function(e){
 	 		var E = e.originalEvent;
 	 		delta = 0;
@@ -73,47 +101,19 @@
 	 		}else{
 	 			delta = E.wheelDelta;
             }
-            console.log(e)
-            
-            var event = false;
 
-            if(delta < 0 && !event){  //
-                console.log(delta);
-                if(numWheelCount == 0){
-                    TweenMax.to($(".box.t1"),0.6, {top:"-100%", background:"#cccccc"})
-                    TweenMax.to($(".box.t2"),0.6, {top:"0" ,background:"#d50505"})
-                    numWheelCount++;
-                }else if(numWheelCount == 1 && event == flase){
-                    event = true;
-                    swiper.slideTo(0, 500, false);
-                    numWheelCount++;
-                    event = false;
-                }else if(numWheelCount == 2 && event == flase){
-                    swiper.slideTo(1, 500, false);
-                    numWheelCount++;
-                }else if(numWheelCount == 3){
-                    swiper.slideTo(2, 500, false);
-                    numWheelCount++;
-                }
-                
+            if(delta < 0){
                 console.log("내려가");
+                TweenMax.to($(".box.t1"),0.6, {top:"-100%", background:"#cccccc"})
+                TweenMax.to($(".box.t2"),0.6, {top:"0" ,background:"#d50505"})
 
             }else if (delta > 0){
-                console.log(delta);
-                if(numWheelCount == 1){
-                    TweenMax.to($(".box.t1"),0.6, {top:"0", background:"#ffeadc"})
-                    TweenMax.to($(".box.t2"),0.6, {top:"100%" ,background:"#fad3b9"})
-                    swiper.slideTo(1);
-                    numWheelCount--;
-                }else if(numWheelCount == 0){
-                    swiper.slideTo(0)
-                    numWheelCount = 0;
-                }
                 console.log("올라가");
-
+                if(swiper.activeIndex == 0){
+                    TweenMax.to($(".box.t1"),0.6, {delay:0.3, top:"0", background:"#cccccc"})
+                    TweenMax.to($(".box.t2"),0.6, {delay:0.3, top:"100%",background:"#d50505"})
+                }
             }
-
-            console.log(numWheelCount)
         });
 
     </script>
