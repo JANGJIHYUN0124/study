@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var copyObject = function(target){
+            var result = {};
+            for(var prop in target){
+                result[prop] = target[prop];
+            }
+            return result;
+        };
+
+        var copyObjectDeep = function(target){
+            var result ={};
+            if(typeof target === 'object' && target !== null){
+                console.log("if-1")
+                for(var prop in target){
+                    result[prop] = copyObjectDeep(target[prop]);
+                }
+                console.log(123)
+            }else{
+                result = target;
+                console.log(result)
+                console.log("???")
+            }
+
+            return result;
+        };
+
+        var obj = {
+            a: 'jihyun',
+            b: {
+                c:null,
+                d:[1,2]
+            }
+        };
+
+        var obj2 = copyObjectDeep(obj);
+        var obj3 = copyObject(obj);
+        console.log(obj2)
+        //console.log(obj3)
+    </script>
+</body>
+</html>  

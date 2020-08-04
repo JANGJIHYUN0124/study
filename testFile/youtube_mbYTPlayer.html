@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./common/css/swiper.min.css">
+    <link rel="stylesheet" href="./common/css/jquery.mb.YTPlayer.min.css">
+	<script type="text/javascript" src="./common/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="./common/js/TweenMax.js"></script>
+    <script type="text/javascript" src="./common/js/jquery.smoothwheel.js"></script>
+    <script type="text/javascript" src="./common/js/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="./common/js/swiper.min.js"></script>
+    <script type="text/javascript" src="./common/js/jquery.mb.YTPlayer.js"></script>
+
+    <script>
+        jQuery( function() {
+            jQuery( '#background' ).YTPlayer();
+        } );
+    </script>
+    <style>
+        body { margin: 0px; }
+        .jb-box { position: relative; }
+        #background { z-index: -1; }
+        .jb-text { position: absolute; top: 50%; left: 50%; width: 400px; margin-left: -200px; text-align: center; color: #ffffff; }
+    </style>
+</head>
+<body>
+    <div class="jb-box">
+        <div id="background" class="player" data-property="{
+          videoURL:'https://youtu.be/KKjuRJh_3LY',
+          mute: true,
+          showControls: false,
+          useOnMobile: true,
+          quality: 'highres',
+          containment: 'self',
+          loop: true,
+          autoPlay: true,
+          stopMovieOnBlur: false,
+          startAt: 0,
+          opacity: 1
+        }"></div>
+        <div class="jb-text">
+          <h1>Lorem Ipsum Dolor</h1>
+        </div>
+      </div>
+</body>
+</html>
